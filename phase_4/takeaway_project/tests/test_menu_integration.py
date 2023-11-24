@@ -1,0 +1,30 @@
+from lib.order_manager import *
+from lib.menu import Menu
+from lib.dish import *
+from lib.text_sender import *
+
+"""
+Given a menu with a list of three dishes
+When we want to see the menu
+#show_menu returns a list of strings with the dishes and their prices
+"""
+def test_menu_intialised_with_three_dishes_and_show_menu():
+    dish1 = Dish('Chicken Tikka Masala', 12, 30)
+    dish2 = Dish('Lamb Bhuna', 15, 45)
+    dish3 = Dish('Poppadoms', 3, 5)
+    menu = Menu([dish1, dish2, dish3])
+    assert menu.show_menu() == 'Chicken Tikka Masala - £12.00\nLamb Bhuna - £15.00\nPoppadoms - £3.00'
+
+"""
+Given a menu with an empty list
+When we add two dishes
+And want to see the menu
+#show_menu returns those two dishes and their prices
+"""
+def test_add_two_dishes_to_an_empty_menu():
+    dish1 = Dish('Chicken Tikka Masala', 12, 30)
+    dish2 = Dish('Lamb Bhuna', 15, 45)
+    menu = Menu([])
+    menu.add_to_menu(dish1)
+    menu.add_to_menu(dish2)
+    assert menu.show_menu() == 'Chicken Tikka Masala - £12.00\nLamb Bhuna - £15.00'
